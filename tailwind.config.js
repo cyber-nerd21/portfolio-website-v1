@@ -8,74 +8,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#090a0c",
-        surface: {
-          DEFAULT: "#0f1115",
-          elevated: "#14161c",
-          hover: "#1a1d24",
-          border: "rgba(255, 255, 255, 0.08)",
-          "border-hover": "rgba(255, 255, 255, 0.18)",
+        cream: {
+          50: "#FCFBF9",
+          100: "#FAF9F6", // Primary background
+          200: "#F2EFE8", // Secondary containers
+          300: "#E8E4DC", // Borders
+          400: "#D3CEC4",
         },
-        muted: {
-          DEFAULT: "#8f929d",
-          foreground: "#555865",
-          light: "#b4b7c4",
+        ink: {
+          900: "#242424", // Primary text
+          700: "#45433F",
+          500: "#77736C", // Muted text
+          300: "#A8A49C",
         },
         accent: {
-          DEFAULT: "#ffffff",
-          emerald: "#10b981",
-          amber: "#f59e0b",
-          blue: "#38bdf8",
-          purple: "#a855f7",
+          warm: "#8C6A43",
+          olive: "#4A5D4E",
+          terracotta: "#A35C4A",
+          sage: "#6E8272",
         },
       },
       fontFamily: {
+        serif: ['"Newsreader"', "Charter", '"Bitstream Charter"', "Georgia", "serif"],
         sans: [
+          '"Plus Jakarta Sans"',
           "-apple-system",
           "BlinkMacSystemFont",
           '"Segoe UI"',
           "Roboto",
-          '"Helvetica Neue"',
-          "Arial",
           "sans-serif",
         ],
         mono: [
           '"JetBrains Mono"',
           '"Geist Mono"',
-          '"Fira Code"',
           "ui-monospace",
           "SFMono-Regular",
-          "Menlo",
-          "Monaco",
-          "Consolas",
           "monospace",
         ],
       },
-      letterSpacing: {
-        tighter: "-0.04em",
-        tight: "-0.02em",
-        wide: "0.04em",
-        widest: "0.12em",
-      },
       boxShadow: {
-        subtle: "0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05)",
-        card: "0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08)",
-        "card-hover": "0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.16)",
-        glow: "0 0 30px -5px rgba(255, 255, 255, 0.07)",
-      },
-      animation: {
-        "pulse-subtle": "pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "fade-in": "fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-      },
-      keyframes: {
-        pulseSubtle: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.4" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(8px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+        editorial: "0 1px 3px 0 rgba(36, 36, 36, 0.04), 0 1px 2px -1px rgba(36, 36, 36, 0.03)",
+        card: "0 4px 20px -2px rgba(36, 36, 36, 0.05), 0 2px 6px -1px rgba(36, 36, 36, 0.03)",
+        "card-hover": "0 12px 32px -4px rgba(36, 36, 36, 0.08), 0 4px 12px -2px rgba(36, 36, 36, 0.04)",
       },
     },
   },

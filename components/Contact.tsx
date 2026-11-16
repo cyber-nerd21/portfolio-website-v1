@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, Github, ArrowUpRight, Copy, Check, MessageSquare } from "lucide-react";
+import { Mail, Phone, Github, ArrowUpRight, Copy, Check } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function Contact() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const copyToClipboard = (text: string, field: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -17,36 +19,37 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 sm:px-8 max-w-6xl mx-auto border-t border-white/[0.06]">
+    <section id="contact" className="py-20 md:py-28 px-6 sm:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
       <div className="max-w-3xl">
-        <span className="text-xs font-mono text-[#71717a] uppercase tracking-wider block mb-2">
-          04 / Contact
+        <span className="text-xs font-mono text-[#77736C] uppercase tracking-wider block mb-2">
+          05 / Contact
         </span>
-        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#f4f4f6] mb-4">
-          Have something interesting in mind?
+        <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#242424] mb-4">
+          Let&apos;s build something meaningful.
         </h2>
-        <p className="text-base sm:text-lg text-[#8f929d] leading-relaxed mb-12">
-          I&apos;m always interested in learning, building and connecting with people working on interesting problems.
+        <p className="text-base sm:text-lg text-[#77736C] leading-relaxed mb-12 max-w-xl">
+          I&apos;m always keen to discuss GenAI backend engineering, RAG pipelines, internship opportunities, or interesting software challenges.
         </p>
 
         {/* Contact Links Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {/* Email */}
-          <a
+          <motion.a
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
             href="mailto:amoghdeodhar886@gmail.com"
-            className="group relative p-5 rounded-2xl bg-[#0f1115] border border-white/[0.08] hover:border-white/[0.2] transition-all duration-200 flex flex-col justify-between"
+            className="group relative p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="p-2 rounded-xl bg-white/[0.04] text-white/80 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-xl bg-[#F2EFE8] text-[#242424]">
                 <Mail className="w-4 h-4" />
               </div>
               <button
                 onClick={(e) => copyToClipboard("amoghdeodhar886@gmail.com", "email", e)}
                 title="Copy email address"
-                className="p-1.5 rounded-lg text-[#71717a] hover:text-white hover:bg-white/[0.06] transition-colors"
+                className="p-1.5 rounded-lg text-[#77736C] hover:text-[#242424] hover:bg-[#F2EFE8] transition-colors"
               >
                 {copiedField === "email" ? (
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-[#4A5D4E]" />
                 ) : (
                   <Copy className="w-3.5 h-3.5" />
                 )}
@@ -54,36 +57,37 @@ export default function Contact() {
             </div>
 
             <div>
-              <span className="text-xs font-mono text-[#71717a] block mb-1">
-                EMAIL DIRECT
+              <span className="text-[11px] font-mono text-[#77736C] uppercase tracking-wider block mb-1">
+                Direct Email
               </span>
-              <span className="text-sm font-medium text-[#f4f4f6] group-hover:text-white transition-colors break-all">
+              <span className="text-sm font-medium text-[#242424] group-hover:text-[#4A5D4E] transition-colors break-all">
                 amoghdeodhar886@gmail.com
               </span>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between text-xs font-mono text-[#71717a]">
-              <span>Send Mail</span>
+            <div className="mt-5 pt-3 border-t border-[#E8E4DC] flex items-center justify-between text-xs font-mono text-[#77736C]">
+              <span>Send Message</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
-          </a>
+          </motion.a>
 
           {/* Phone */}
-          <a
+          <motion.a
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
             href="tel:+919130677940"
-            className="group relative p-5 rounded-2xl bg-[#0f1115] border border-white/[0.08] hover:border-white/[0.2] transition-all duration-200 flex flex-col justify-between"
+            className="group relative p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="p-2 rounded-xl bg-white/[0.04] text-white/80 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-xl bg-[#F2EFE8] text-[#242424]">
                 <Phone className="w-4 h-4" />
               </div>
               <button
                 onClick={(e) => copyToClipboard("+91 9130677940", "phone", e)}
                 title="Copy phone number"
-                className="p-1.5 rounded-lg text-[#71717a] hover:text-white hover:bg-white/[0.06] transition-colors"
+                className="p-1.5 rounded-lg text-[#77736C] hover:text-[#242424] hover:bg-[#F2EFE8] transition-colors"
               >
                 {copiedField === "phone" ? (
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <Check className="w-3.5 h-3.5 text-[#4A5D4E]" />
                 ) : (
                   <Copy className="w-3.5 h-3.5" />
                 )}
@@ -91,50 +95,51 @@ export default function Contact() {
             </div>
 
             <div>
-              <span className="text-xs font-mono text-[#71717a] block mb-1">
-                PHONE / WHATSAPP
+              <span className="text-[11px] font-mono text-[#77736C] uppercase tracking-wider block mb-1">
+                Phone / WhatsApp
               </span>
-              <span className="text-sm font-medium text-[#f4f4f6] group-hover:text-white transition-colors">
+              <span className="text-sm font-medium text-[#242424] group-hover:text-[#4A5D4E] transition-colors">
                 +91 9130677940
               </span>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between text-xs font-mono text-[#71717a]">
-              <span>Place Call</span>
+            <div className="mt-5 pt-3 border-t border-[#E8E4DC] flex items-center justify-between text-xs font-mono text-[#77736C]">
+              <span>Call Direct</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
-          </a>
+          </motion.a>
 
           {/* GitHub */}
-          <a
-            href="https://github.com/Gigacorebess"
+          <motion.a
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
+            href="https://github.com/cyber-nerd21"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative p-5 rounded-2xl bg-[#0f1115] border border-white/[0.08] hover:border-white/[0.2] transition-all duration-200 flex flex-col justify-between"
+            className="group relative p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="p-2 rounded-xl bg-white/[0.04] text-white/80 group-hover:text-white transition-colors">
+              <div className="p-2.5 rounded-xl bg-[#F2EFE8] text-[#242424]">
                 <Github className="w-4 h-4" />
               </div>
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">
-                Active
+              <span className="text-[10px] font-mono text-[#4A5D4E] bg-[#EBF2EC] px-2 py-0.5 rounded border border-[#D1E0D3]">
+                cyber-nerd21
               </span>
             </div>
 
             <div>
-              <span className="text-xs font-mono text-[#71717a] block mb-1">
-                GITHUB PROFILE
+              <span className="text-[11px] font-mono text-[#77736C] uppercase tracking-wider block mb-1">
+                GitHub Profile
               </span>
-              <span className="text-sm font-medium text-[#f4f4f6] group-hover:text-white transition-colors">
-                github.com/Gigacorebess
+              <span className="text-sm font-medium text-[#242424] group-hover:text-[#4A5D4E] transition-colors">
+                github.com/cyber-nerd21
               </span>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-white/[0.04] flex items-center justify-between text-xs font-mono text-[#71717a]">
-              <span>Visit Profile</span>
+            <div className="mt-5 pt-3 border-t border-[#E8E4DC] flex items-center justify-between text-xs font-mono text-[#77736C]">
+              <span>View Repositories</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>
-          </a>
+          </motion.a>
         </div>
       </div>
     </section>

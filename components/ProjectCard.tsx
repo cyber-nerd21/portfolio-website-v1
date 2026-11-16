@@ -1,128 +1,82 @@
 "use client";
 
-import React, { useState } from "react";
-import { Github, ArrowUpRight, CheckCircle2, AlertCircle, Clock, Cpu, FileText, BarChart2, Workflow } from "lucide-react";
+import React from "react";
+import { Github, ArrowUpRight, AlertCircle, FileText, BarChart3, ShoppingBag, Workflow, Clock } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-export interface ProjectData {
+export interface ProjectItem {
   number: string;
   title: string;
   description: string;
   technologies: string[];
-  status: "Built" | "In Development" | "Concept / Exploring" | "Working Prototype";
+  status: string;
+  statusType: "built-warning" | "development" | "prototype";
   githubUrl?: string;
+  deploymentNote?: string;
   features?: string[];
-  isAutomationHighlight?: boolean;
 }
 
-export default function ProjectCard({ project }: { project: ProjectData }) {
-  const [isHovered, setIsHovered] = useState(false);
+export default function ProjectCard({ project }: { project: ProjectItem }) {
+  const shouldReduceMotion = useReducedMotion();
 
-  // Status configuration
-  const getStatusBadge = () => {
-    switch (project.status) {
-      case "Built":
+  // Status Badge Rendering
+  const renderStatus = () => {
+    switch (project.statusType) {
+      case "built-warning":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Built
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-[#FFF8EB] text-[#8C6A43] border border-[#F3E3C7]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8C6A43]" />
+            {project.status}
           </span>
         );
-      case "In Development":
+      case "development":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-            In Development
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#77736C]" />
+            {project.status}
           </span>
         );
-      case "Concept / Exploring":
+      case "prototype":
         return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-            Concept / Exploring
-          </span>
-        );
-      case "Working Prototype":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-sky-500/10 text-sky-300 border border-sky-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-            Working Prototype
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-[#EBF2EC] text-[#4A5D4E] border border-[#D1E0D3]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4A5D4E] animate-pulse" />
+            {project.status}
           </span>
         );
     }
   };
 
-  // Pure CSS visual mockups for each project
+  // Pure CSS visual mockup per project
   const renderVisual = () => {
     if (project.title === "InsightBot") {
       return (
-        <div className="w-full h-36 rounded-xl bg-[#0a0c10] border border-white/[0.06] p-4 flex flex-col justify-between overflow-hidden relative font-mono text-[11px]">
-          {/* Subtle grid background */}
-          <div className="absolute inset-0 bg-grid-subtle opacity-30" />
-          
-          <div className="relative z-10 flex items-center justify-between text-[#71717a] border-b border-white/[0.06] pb-2">
-            <span className="flex items-center gap-1.5 text-[#e4e4e7]">
-              <FileText className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="w-full h-40 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC] p-4 flex flex-col justify-between relative overflow-hidden font-mono text-[11px]">
+          <div className="flex items-center justify-between text-[#77736C] border-b border-[#E8E4DC] pb-2">
+            <span className="flex items-center gap-1.5 text-[#242424] font-medium">
+              <FileText className="w-3.5 h-3.5 text-[#4A5D4E]" />
               rag_pipeline.py
             </span>
-            <span className="text-[10px] text-emerald-400/90 bg-emerald-500/10 px-2 py-0.5 rounded">
+            <span className="text-[10px] text-[#4A5D4E] bg-[#EBF2EC] px-2 py-0.5 rounded border border-[#D1E0D3]">
               3072-dim pgvector
             </span>
           </div>
 
-          <div className="relative z-10 space-y-1 text-[#8f929d] py-1">
+          <div className="space-y-1.5 py-1.5 text-[#77736C]">
             <div className="flex items-center gap-2">
-              <span className="text-[#555865]">&gt;</span>
-              <span>retriever = pgvector.as_retriever(k=4)</span>
+              <span className="text-[#A8A49C]">&gt;</span>
+              <span>retriever = db.as_retriever(k=4, metric=&quot;cosine&quot;)</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-[#555865]">&gt;</span>
-              <span className="text-emerald-300/90">llm = ChatGoogleGenAI(model=&quot;gemini-flash&quot;)</span>
+              <span className="text-[#A8A49C]">&gt;</span>
+              <span className="text-[#242424] font-medium">
+                llm = ChatGoogleGenAI(model=&quot;gemini-flash&quot;)
+              </span>
             </div>
           </div>
 
-          <div className="relative z-10 flex items-center justify-between text-[10px] text-[#71717a] pt-2 border-t border-white/[0.04]">
-            <span className="text-[#a1a1aa]">Latency: ~340ms</span>
-            <span className="text-emerald-400">Stream: Active</span>
-          </div>
-        </div>
-      );
-    }
-
-    if (project.title === "Ameya Dresswell & Boutique") {
-      return (
-        <div className="w-full h-36 rounded-xl bg-[#0a0c10] border border-white/[0.06] p-4 flex flex-col justify-between overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] to-transparent pointer-events-none" />
-
-          <div className="flex items-center justify-between text-xs border-b border-white/[0.06] pb-2">
-            <span className="font-mono text-[11px] text-[#f4f4f6] tracking-wide">
-              COLLECTION / CATALOG
-            </span>
-            <span className="font-mono text-[10px] text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded">
-              Rental Flow Engine
-            </span>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2 py-2">
-            <div className="bg-[#14161c] border border-white/[0.05] rounded-lg p-2 flex flex-col justify-between">
-              <span className="text-[10px] text-[#71717a] font-mono">ITEM 01</span>
-              <div className="h-1.5 w-12 bg-white/20 rounded mt-1" />
-              <span className="text-[10px] text-emerald-400 font-mono mt-1">Available</span>
-            </div>
-            <div className="bg-[#14161c] border border-white/[0.05] rounded-lg p-2 flex flex-col justify-between">
-              <span className="text-[10px] text-[#71717a] font-mono">ITEM 02</span>
-              <div className="h-1.5 w-10 bg-white/20 rounded mt-1" />
-              <span className="text-[10px] text-amber-400 font-mono mt-1">Reserved</span>
-            </div>
-            <div className="bg-[#14161c] border border-white/[0.05] rounded-lg p-2 flex flex-col justify-between">
-              <span className="text-[10px] text-[#71717a] font-mono">ITEM 03</span>
-              <div className="h-1.5 w-14 bg-white/20 rounded mt-1" />
-              <span className="text-[10px] text-emerald-400 font-mono mt-1">Available</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between text-[10px] font-mono text-[#71717a] pt-1">
-            <span>Customer Discovery</span>
-            <span>Cart &amp; Booking State</span>
+          <div className="flex items-center justify-between text-[10px] text-[#77736C] pt-2 border-t border-[#E8E4DC]">
+            <span>FastAPI Async Endpoint</span>
+            <span className="text-[#8C6A43] font-medium">Backend: Suspended (Railway Free Tier Ended)</span>
           </div>
         </div>
       );
@@ -130,39 +84,78 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
 
     if (project.title === "DataSense") {
       return (
-        <div className="w-full h-36 rounded-xl bg-[#0a0c10] border border-white/[0.06] p-4 flex flex-col justify-between overflow-hidden relative">
-          <div className="flex items-center justify-between text-xs border-b border-white/[0.06] pb-2">
-            <div className="flex items-center gap-1.5">
-              <BarChart2 className="w-3.5 h-3.5 text-purple-400" />
-              <span className="font-mono text-[11px] text-[#f4f4f6]">Analytics Pipeline</span>
+        <div className="w-full h-40 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC] p-4 flex flex-col justify-between relative overflow-hidden">
+          <div className="flex items-center justify-between text-xs border-b border-[#E8E4DC] pb-2">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#242424] font-medium">
+              <BarChart3 className="w-3.5 h-3.5 text-[#8C6A43]" />
+              <span>Automated KPI Visualizer</span>
             </div>
-            <span className="font-mono text-[10px] text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded">
+            <span className="font-mono text-[10px] text-[#77736C] bg-[#F2EFE8] px-2 py-0.5 rounded border border-[#E8E4DC]">
               No-Code Engine
             </span>
           </div>
 
-          {/* Minimalist SVG Bar Chart Mock */}
-          <div className="flex items-end gap-2 h-14 pt-2 px-1">
-            <div className="w-full bg-[#181a22] rounded-t flex items-end justify-center p-0.5 h-full">
-              <div className="w-full bg-white/20 rounded-t h-[45%]" />
+          {/* Minimalist Editorial Bar Chart Simulation */}
+          <div className="flex items-end gap-2.5 h-16 pt-3 px-2">
+            <div className="w-full bg-[#F2EFE8] rounded-t flex items-end justify-center p-0.5 h-full">
+              <div className="w-full bg-[#D3CEC4] rounded-t h-[40%]" />
             </div>
-            <div className="w-full bg-[#181a22] rounded-t flex items-end justify-center p-0.5 h-full">
-              <div className="w-full bg-white/40 rounded-t h-[75%]" />
+            <div className="w-full bg-[#F2EFE8] rounded-t flex items-end justify-center p-0.5 h-full">
+              <div className="w-full bg-[#8C6A43] rounded-t h-[75%]" />
             </div>
-            <div className="w-full bg-[#181a22] rounded-t flex items-end justify-center p-0.5 h-full">
-              <div className="w-full bg-purple-400/80 rounded-t h-[95%]" />
+            <div className="w-full bg-[#F2EFE8] rounded-t flex items-end justify-center p-0.5 h-full">
+              <div className="w-full bg-[#4A5D4E] rounded-t h-[95%]" />
             </div>
-            <div className="w-full bg-[#181a22] rounded-t flex items-end justify-center p-0.5 h-full">
-              <div className="w-full bg-white/30 rounded-t h-[60%]" />
+            <div className="w-full bg-[#F2EFE8] rounded-t flex items-end justify-center p-0.5 h-full">
+              <div className="w-full bg-[#A35C4A] rounded-t h-[60%]" />
             </div>
-            <div className="w-full bg-[#181a22] rounded-t flex items-end justify-center p-0.5 h-full">
-              <div className="w-full bg-white/50 rounded-t h-[80%]" />
+            <div className="w-full bg-[#F2EFE8] rounded-t flex items-end justify-center p-0.5 h-full">
+              <div className="w-full bg-[#242424] rounded-t h-[85%]" />
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-[10px] font-mono text-[#71717a] pt-1">
-            <span>Automated KPI Mapping</span>
-            <span>Interactive Insights</span>
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#77736C] pt-2 border-t border-[#E8E4DC]">
+            <span>Automated KPI Correlation</span>
+            <span>Dynamic Chart Generator</span>
+          </div>
+        </div>
+      );
+    }
+
+    if (project.title === "Ameya Dresswell & Boutique") {
+      return (
+        <div className="w-full h-40 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC] p-4 flex flex-col justify-between relative overflow-hidden">
+          <div className="flex items-center justify-between text-xs border-b border-[#E8E4DC] pb-2">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#242424] font-medium">
+              <ShoppingBag className="w-3.5 h-3.5 text-[#A35C4A]" />
+              <span>Costume Rental Architecture</span>
+            </div>
+            <span className="font-mono text-[10px] text-[#A35C4A] bg-[#FDF2F0] px-2 py-0.5 rounded border border-[#FADAD5]">
+              Catalog &amp; Booking
+            </span>
+          </div>
+
+          <div className="grid grid-cols-3 gap-2 py-2">
+            <div className="bg-[#FFFFFF] border border-[#E8E4DC] rounded-lg p-2.5 flex flex-col justify-between shadow-editorial">
+              <span className="text-[10px] text-[#77736C] font-mono">DRESS 01</span>
+              <div className="h-1.5 w-12 bg-[#E8E4DC] rounded mt-1.5" />
+              <span className="text-[10px] text-[#4A5D4E] font-mono font-medium mt-1">Available</span>
+            </div>
+            <div className="bg-[#FFFFFF] border border-[#E8E4DC] rounded-lg p-2.5 flex flex-col justify-between shadow-editorial">
+              <span className="text-[10px] text-[#77736C] font-mono">DRESS 02</span>
+              <div className="h-1.5 w-10 bg-[#E8E4DC] rounded mt-1.5" />
+              <span className="text-[10px] text-[#8C6A43] font-mono font-medium mt-1">Reserved</span>
+            </div>
+            <div className="bg-[#FFFFFF] border border-[#E8E4DC] rounded-lg p-2.5 flex flex-col justify-between shadow-editorial">
+              <span className="text-[10px] text-[#77736C] font-mono">DRESS 03</span>
+              <div className="h-1.5 w-14 bg-[#E8E4DC] rounded mt-1.5" />
+              <span className="text-[10px] text-[#4A5D4E] font-mono font-medium mt-1">Available</span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#77736C] pt-2 border-t border-[#E8E4DC]">
+            <span>Product Discovery</span>
+            <span>Simplified Order Flow</span>
           </div>
         </div>
       );
@@ -170,41 +163,39 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
 
     if (project.title === "Allo Innoware Automation") {
       return (
-        <div className="w-full h-36 rounded-xl bg-[#090b10] border border-sky-500/20 p-4 flex flex-col justify-between overflow-hidden relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/[0.04] via-transparent to-transparent pointer-events-none" />
-
-          <div className="flex items-center justify-between text-xs border-b border-white/[0.06] pb-2">
-            <div className="flex items-center gap-1.5">
-              <Workflow className="w-3.5 h-3.5 text-sky-400" />
-              <span className="font-mono text-[11px] text-[#f4f4f6]">Operations Orchestration</span>
+        <div className="w-full h-40 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC] p-4 flex flex-col justify-between relative overflow-hidden">
+          <div className="flex items-center justify-between text-xs border-b border-[#E8E4DC] pb-2">
+            <div className="flex items-center gap-1.5 font-mono text-[11px] text-[#242424] font-medium">
+              <Workflow className="w-3.5 h-3.5 text-[#4A5D4E]" />
+              <span>Operational Escalation Engine</span>
             </div>
-            <span className="font-mono text-[10px] text-sky-300 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">
-              Operational Automation
+            <span className="font-mono text-[10px] text-[#4A5D4E] bg-[#EBF2EC] px-2 py-0.5 rounded border border-[#D1E0D3]">
+              Workflow Automation
             </span>
           </div>
 
-          {/* Workflow step progression */}
+          {/* Workflow Sequence */}
           <div className="flex items-center justify-between gap-1 text-[10px] font-mono py-2">
-            <div className="px-2 py-1 rounded bg-[#131722] border border-sky-500/30 text-sky-200">
+            <div className="px-2 py-1 rounded bg-[#FFFFFF] border border-[#E8E4DC] text-[#242424] shadow-editorial">
               Task Cycle
             </div>
-            <span className="text-[#555865]">→</span>
-            <div className="px-2 py-1 rounded bg-[#131722] border border-sky-500/30 text-sky-200">
-              Proof Proof
+            <span className="text-[#A8A49C]">→</span>
+            <div className="px-2 py-1 rounded bg-[#FFFFFF] border border-[#E8E4DC] text-[#242424] shadow-editorial">
+              Proof Upload
             </div>
-            <span className="text-[#555865]">→</span>
-            <div className="px-2 py-1 rounded bg-[#131722] border border-sky-500/30 text-sky-200">
-              Overdue Detect
+            <span className="text-[#A8A49C]">→</span>
+            <div className="px-2 py-1 rounded bg-[#FFFFFF] border border-[#E8E4DC] text-[#242424] shadow-editorial">
+              Overdue Scan
             </div>
-            <span className="text-[#555865]">→</span>
-            <div className="px-2 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-200">
+            <span className="text-[#A8A49C]">→</span>
+            <div className="px-2 py-1 rounded bg-[#FDF2F0] border border-[#FADAD5] text-[#A35C4A]">
               Escalate
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-[10px] font-mono text-[#71717a] pt-1">
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#77736C] pt-2 border-t border-[#E8E4DC]">
             <span>Google Apps Script Trigger</span>
-            <span className="text-sky-400">Zero Duplicates</span>
+            <span className="text-[#4A5D4E] font-medium">Zero Duplicate Alerts</span>
           </div>
         </div>
       );
@@ -214,84 +205,90 @@ export default function ProjectCard({ project }: { project: ProjectData }) {
   };
 
   return (
-    <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`relative group rounded-2xl bg-[#0f1115] border transition-all duration-300 flex flex-col justify-between p-6 sm:p-7 ${
-        project.isAutomationHighlight
-          ? "border-sky-500/25 hover:border-sky-500/40 shadow-[0_4px_24px_-4px_rgba(56,189,248,0.06)]"
-          : "border-white/[0.08] hover:border-white/[0.18] shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
-      }`}
+    <motion.div
+      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={shouldReduceMotion ? {} : { y: -4 }}
+      className="group relative rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-6 sm:p-7 hover:border-[#D3CEC4] hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between"
     >
       <div>
-        {/* Top Header: Number and Status */}
+        {/* Header: Project Number and Status */}
         <div className="flex items-center justify-between mb-5">
-          <span className="text-xs font-mono font-bold tracking-widest text-[#71717a] group-hover:text-white transition-colors">
-            {project.number}
+          <span className="font-mono text-xs font-semibold tracking-widest text-[#77736C]">
+            PROJECT {project.number}
           </span>
-          {getStatusBadge()}
+          {renderStatus()}
         </div>
 
-        {/* Visual CSS-crafted component */}
+        {/* Visual Preview */}
         <div className="mb-6">{renderVisual()}</div>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#f4f4f6] group-hover:text-white transition-colors mb-3">
+        <h3 className="font-serif text-2xl font-medium tracking-tight text-[#242424] group-hover:text-[#4A5D4E] transition-colors mb-3">
           {project.title}
         </h3>
 
-        {/* Short Description */}
-        <p className="text-sm text-[#8f929d] leading-relaxed mb-6">
+        {/* Description */}
+        <p className="text-sm text-[#77736C] leading-relaxed mb-5">
           {project.description}
         </p>
 
-        {/* Project 04 Features list */}
+        {/* Deployment note if present (e.g. InsightBot Railway status) */}
+        {project.deploymentNote && (
+          <div className="mb-5 p-3 rounded-xl bg-[#FFF8EB] border border-[#F3E3C7] flex items-start gap-2 text-xs text-[#8C6A43] leading-relaxed">
+            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#8C6A43]" />
+            <span>{project.deploymentNote}</span>
+          </div>
+        )}
+
+        {/* Project 04 Features */}
         {project.features && project.features.length > 0 && (
-          <div className="mb-6 p-4 rounded-xl bg-[#0a0c10] border border-white/[0.05]">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#a1a1aa] block mb-2.5">
-              Key Automation Capabilities:
+          <div className="mb-5 p-4 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC]">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[#77736C] block mb-2.5">
+              Features &amp; Automations:
             </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#45433F]">
               {project.features.map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-1.5 text-xs text-[#a1a1aa]">
-                  <span className="text-sky-400 mt-0.5">•</span>
+                <li key={idx} className="flex items-start gap-1.5">
+                  <span className="text-[#4A5D4E]">•</span>
                   <span>{feature}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         )}
       </div>
 
-      {/* Bottom Footer: Tech tags and external action if allowed */}
-      <div className="pt-5 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto">
-        {/* Tech tags */}
+      {/* Footer: Tech tags and GitHub link if allowed */}
+      <div className="pt-5 border-t border-[#E8E4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto">
         <div className="flex flex-wrap gap-1.5">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#16181f] text-[#a1a1aa] border border-white/[0.05]"
+              className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        {/* External GitHub Button ONLY for InsightBot */}
+        {/* GitHub link ONLY for InsightBot and DataSense as specified */}
         {project.githubUrl && (
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white hover:text-white bg-white/[0.08] hover:bg-white/[0.14] border border-white/[0.12] hover:border-white/20 px-3.5 py-1.5 rounded-lg transition-all duration-200 self-start sm:self-auto shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#242424] hover:text-[#FFFFFF] bg-[#FFFFFF] hover:bg-[#242424] border border-[#E8E4DC] hover:border-[#242424] px-3.5 py-1.5 rounded-lg transition-all duration-200 self-start sm:self-auto shrink-0 shadow-editorial"
             aria-label={`View ${project.title} on GitHub`}
           >
             <Github className="w-3.5 h-3.5" />
             <span>GitHub</span>
-            <ArrowUpRight className="w-3 h-3 opacity-60" />
+            <ArrowUpRight className="w-3 h-3 opacity-70" />
           </a>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

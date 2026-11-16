@@ -1,120 +1,137 @@
 "use client";
 
 import React from "react";
-import { GraduationCap, Briefcase, Sparkles, Terminal, Code2 } from "lucide-react";
+import { GraduationCap, Sparkles, Cpu, Layers, Workflow, Database, Terminal, Code2 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+
+const INTERESTS = [
+  {
+    title: "Generative AI",
+    description: "Architecting contextual AI systems with LLMs, prompt engineering and semantic orchestration.",
+    icon: <Sparkles className="w-4 h-4 text-[#8C6A43]" />,
+  },
+  {
+    title: "Retrieval-Augmented Generation",
+    description: "Designing end-to-end RAG pipelines with vector databases, hybrid retrieval and dynamic re-ranking.",
+    icon: <Database className="w-4 h-4 text-[#4A5D4E]" />,
+  },
+  {
+    title: "LLM Applications & Agents",
+    description: "Building autonomous tool-calling agents, intent parsing, and natural language query systems.",
+    icon: <Cpu className="w-4 h-4 text-[#A35C4A]" />,
+  },
+  {
+    title: "Backend Engineering",
+    description: "Engineering asynchronous, high-throughput REST APIs and scalable backend architectures using FastAPI & Node.js.",
+    icon: <Terminal className="w-4 h-4 text-[#242424]" />,
+  },
+  {
+    title: "Automation",
+    description: "Automating operational workflows, scheduled cron cycles, escalation gates, and task orchestration.",
+    icon: <Workflow className="w-4 h-4 text-[#8C6A43]" />,
+  },
+  {
+    title: "Full-Stack Development",
+    description: "Crafting end-to-end applications with modern Next.js App Router, React, TypeScript and relational databases.",
+    icon: <Code2 className="w-4 h-4 text-[#4A5D4E]" />,
+  },
+];
 
 export default function About() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section id="about" className="py-24 px-6 sm:px-8 max-w-6xl mx-auto border-t border-white/[0.06]">
+    <section id="about" className="py-20 md:py-28 px-6 sm:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
       {/* Section Header */}
-      <div className="mb-12">
-        <span className="text-xs font-mono text-[#71717a] uppercase tracking-wider block mb-2">
+      <div className="mb-14">
+        <span className="text-xs font-mono text-[#77736C] uppercase tracking-wider block mb-2">
           01 / About
         </span>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#f4f4f6]">
+        <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[#242424]">
           A little about me.
         </h2>
       </div>
 
-      {/* Grid Layout: Main Narrative + Background Credentials */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-        {/* Left Column: Authentic narrative specified by user */}
-        <div className="lg:col-span-7 space-y-6 text-[#a1a1aa] text-base sm:text-lg leading-relaxed font-normal">
-          <p className="text-[#e4e4e7] font-medium leading-relaxed">
-            I&apos;m a third-year engineering student interested in software
-            engineering, AI and building useful products.
+        {/* Left Column: Narrative */}
+        <div className="lg:col-span-7 space-y-6 text-[#77736C] text-base sm:text-lg leading-relaxed font-normal">
+          <p className="font-serif text-xl sm:text-2xl text-[#242424] leading-snug font-normal">
+            I&apos;m an Information Technology engineering student with practical experience in GenAI development, data visualization, and full-stack engineering.
           </p>
 
           <p>
-            I enjoy exploring how technology works, experimenting with new ideas
-            and turning concepts into practical applications.
+            Currently pursuing my Bachelor of Engineering in Information Technology at Bharati Vidyapeeth College of Engineering (expected graduation May 2028), I enjoy exploring how software and intelligent systems behave under the hood.
           </p>
 
           <p>
-            My interests include AI applications, backend engineering,
-            automation, full-stack development and problem solving.
+            My work focuses on bridging theoretical AI concepts into robust, production-ready backend applications. Whether architecting vector retrieval pipelines or automating complex operational workflows, I believe software should be reliable, purposeful, and intuitive.
           </p>
 
-          {/* Core Philosophy Card */}
-          <div className="mt-8 p-5 rounded-2xl bg-[#0f1115]/80 border border-white/[0.08] backdrop-blur-sm">
-            <div className="flex items-center gap-2 mb-2 text-xs font-mono text-[#a1a1aa]">
-              <Sparkles className="w-3.5 h-3.5 text-white/70" />
-              <span>APPROACH &amp; MINDSET</span>
+          {/* Education Snapshot Card */}
+          <div className="mt-8 p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] shadow-card">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#77736C] mb-4">
+              <GraduationCap className="w-4 h-4 text-[#242424]" />
+              <span>ACADEMIC FOUNDATION</span>
             </div>
-            <p className="text-sm text-[#8f929d] leading-relaxed">
-              Prioritizing reliable backend architectures, clean API design, and practical RAG pipelines over superficial complexity. Focused on shipping code that solves real operational bottlenecks.
-            </p>
+
+            <div className="space-y-4">
+              <div>
+                <div className="flex items-baseline justify-between">
+                  <h4 className="font-serif text-base sm:text-lg font-medium text-[#242424]">
+                    Bharati Vidyapeeth College of Engineering
+                  </h4>
+                  <span className="text-xs font-mono text-[#77736C]">Expected May 2028</span>
+                </div>
+                <p className="text-sm text-[#77736C] mt-0.5">
+                  Bachelor of Engineering · Information Technology · Navi Mumbai
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-[#E8E4DC]">
+                <div className="flex items-baseline justify-between">
+                  <h4 className="font-serif text-base sm:text-lg font-medium text-[#242424]">
+                    Daksh Gurukul, IIT Guwahati
+                  </h4>
+                  <span className="text-xs font-mono text-[#4A5D4E] bg-[#EBF2EC] px-2 py-0.5 rounded">
+                    Completed
+                  </span>
+                </div>
+                <p className="text-sm text-[#77736C] mt-0.5">
+                  Data Science and Machine Learning · Capstone Projects in ML, Deep Learning &amp; Analytics
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Right Column: Authentic Education & Experience Context */}
-        <div className="lg:col-span-5 space-y-4">
-          {/* Education Card */}
-          <div className="p-5 rounded-2xl bg-[#0f1115] border border-white/[0.08] hover:border-white/[0.14] transition-colors">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#71717a] mb-3">
-              <GraduationCap className="w-4 h-4 text-white/80" />
-              <span>EDUCATION</span>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <div className="flex items-baseline justify-between">
-                  <h4 className="text-sm font-semibold text-[#f4f4f6]">
-                    Bharati Vidyapeeth College of Engineering
-                  </h4>
-                  <span className="text-[11px] font-mono text-[#71717a]">2024 – 2028</span>
-                </div>
-                <p className="text-xs text-[#a1a1aa] mt-0.5">
-                  B.E. in Information Technology · Navi Mumbai
-                </p>
-              </div>
-
-              <div className="pt-3 border-t border-white/[0.05]">
-                <div className="flex items-baseline justify-between">
-                  <h4 className="text-sm font-semibold text-[#f4f4f6]">
-                    Daksh Gurukul, IIT Guwahati
-                  </h4>
-                  <span className="text-[11px] font-mono text-emerald-400">Completed</span>
-                </div>
-                <p className="text-xs text-[#a1a1aa] mt-0.5">
-                  Data Science and Machine Learning · ML &amp; Deep Learning Capstones
-                </p>
-              </div>
-            </div>
+        {/* Right Column: Key Areas of Interest */}
+        <div className="lg:col-span-5 space-y-3">
+          <div className="text-xs font-mono text-[#77736C] uppercase tracking-wider mb-2">
+            AREAS OF SPECIALIZATION &amp; INTEREST
           </div>
-
-          {/* Experience Highlights */}
-          <div className="p-5 rounded-2xl bg-[#0f1115] border border-white/[0.08] hover:border-white/[0.14] transition-colors">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#71717a] mb-3">
-              <Briefcase className="w-4 h-4 text-white/80" />
-              <span>EXPERIENCE SNAPSHOT</span>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <div className="flex items-baseline justify-between">
-                  <h4 className="text-sm font-semibold text-[#f4f4f6]">
-                    Full Stack GenAI Intern
-                  </h4>
-                  <span className="text-[11px] font-mono text-[#71717a]">May – Jul 2025</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+            {INTERESTS.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : idx * 0.05 }}
+                className="p-4 rounded-xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-200"
+              >
+                <div className="flex items-center gap-2.5 mb-1.5">
+                  <div className="p-1 rounded-md bg-[#F2EFE8] border border-[#E8E4DC]">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-sm font-semibold text-[#242424]">
+                    {item.title}
+                  </h3>
                 </div>
-                <p className="text-xs text-[#a1a1aa] mt-0.5">
-                  GenAIKit Software Solution · RAG, Voice AI Agents &amp; NL-to-SQL
+                <p className="text-xs text-[#77736C] leading-relaxed">
+                  {item.description}
                 </p>
-              </div>
-
-              <div className="pt-3 border-t border-white/[0.05]">
-                <div className="flex items-baseline justify-between">
-                  <h4 className="text-sm font-semibold text-[#f4f4f6]">
-                    Data Visualization Associate Intern
-                  </h4>
-                  <span className="text-[11px] font-mono text-[#71717a]">Jul – Aug 2025</span>
-                </div>
-                <p className="text-xs text-[#a1a1aa] mt-0.5">
-                  Excelerate (Saint Louis Univ. Sponsored) · Dubai Remote · KPI Dashboards
-                </p>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

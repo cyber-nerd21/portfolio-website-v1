@@ -1,80 +1,101 @@
 "use client";
 
 import React from "react";
-import { Layout, Server, Database, Bot, Wrench } from "lucide-react";
+import { Code, Layers, Database, Wrench, Bot } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface SkillCategory {
   title: string;
   icon: React.ReactNode;
+  accent: string;
   skills: string[];
 }
 
 const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: "AI & Automation",
-    icon: <Bot className="w-4 h-4 text-purple-400" />,
+    title: "AI & Intelligent Systems",
+    icon: <Bot className="w-4 h-4 text-[#8C6A43]" />,
+    accent: "bg-[#FFF8EB] border-[#F3E3C7]",
     skills: [
-      "LLMs",
       "RAG",
-      "LangChain",
+      "LLM applications",
       "Gemini API",
-      "Google Apps Script",
-      "Workflow Automation",
+      "Semantic Search",
+      "AI Agents",
+      "Natural Language Processing",
     ],
   },
   {
-    title: "Backend",
-    icon: <Server className="w-4 h-4 text-emerald-400" />,
-    skills: ["Node.js", "Express.js", "Python", "FastAPI"],
+    title: "Languages",
+    icon: <Code className="w-4 h-4 text-[#4A5D4E]" />,
+    accent: "bg-[#EBF2EC] border-[#D1E0D3]",
+    skills: ["Python", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    title: "Frontend",
-    icon: <Layout className="w-4 h-4 text-sky-400" />,
-    skills: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+    title: "Frameworks & Runtime",
+    icon: <Layers className="w-4 h-4 text-[#242424]" />,
+    accent: "bg-[#F2EFE8] border-[#E8E4DC]",
+    skills: [
+      "FastAPI",
+      "LangChain",
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+    ],
   },
   {
-    title: "Database",
-    icon: <Database className="w-4 h-4 text-amber-400" />,
-    skills: ["MongoDB", "PostgreSQL", "Supabase"],
+    title: "Databases & Vector Stores",
+    icon: <Database className="w-4 h-4 text-[#A35C4A]" />,
+    accent: "bg-[#FDF2F0] border-[#FADAD5]",
+    skills: ["PostgreSQL", "MongoDB", "pgvector", "Supabase"],
   },
   {
-    title: "Tools",
-    icon: <Wrench className="w-4 h-4 text-[#a1a1aa]" />,
-    skills: ["Git", "GitHub", "VS Code", "Postman", "Docker"],
+    title: "Developer Tooling & Cloud",
+    icon: <Wrench className="w-4 h-4 text-[#77736C]" />,
+    accent: "bg-[#F2EFE8] border-[#E8E4DC]",
+    skills: ["Git", "GitHub", "Docker", "Vercel", "Railway", "Render"],
   },
 ];
 
 export default function Skills() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section id="skills" className="py-24 px-6 sm:px-8 max-w-6xl mx-auto border-t border-white/[0.06]">
+    <section id="skills" className="py-20 md:py-28 px-6 sm:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
       {/* Section Header */}
       <div className="mb-14">
-        <span className="text-xs font-mono text-[#71717a] uppercase tracking-wider block mb-2">
-          03 / Skills &amp; Stack
+        <span className="text-xs font-mono text-[#77736C] uppercase tracking-wider block mb-2">
+          04 / Skills &amp; Stack
         </span>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#f4f4f6] mb-3">
-          Technical Arsenal
+        <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[#242424] mb-3">
+          Technical Capabilities
         </h2>
-        <p className="text-base text-[#8f929d] max-w-xl">
-          Core technologies, frameworks, and tooling I use to architect and ship software.
+        <p className="text-base text-[#77736C] max-w-xl">
+          Core engineering stack, libraries, and infrastructure tools applied in building production systems.
         </p>
       </div>
 
-      {/* Categorized Skills Grid */}
+      {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {SKILL_CATEGORIES.map((cat, idx) => (
-          <div
+          <motion.div
             key={cat.title}
-            className={`p-6 rounded-2xl bg-[#0f1115] border border-white/[0.08] hover:border-white/[0.16] transition-all duration-200 flex flex-col justify-between ${
-              idx === 0 ? "md:col-span-2 lg:col-span-2 bg-gradient-to-br from-[#12141c] to-[#0f1115]" : ""
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : idx * 0.06 }}
+            className={`p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between ${
+              idx === 0 ? "md:col-span-2 lg:col-span-2" : ""
             }`}
           >
             <div>
-              <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-white/[0.05]">
-                <div className="p-1.5 rounded-lg bg-white/[0.04] border border-white/[0.06]">
+              <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-[#E8E4DC]">
+                <div className={`p-1.5 rounded-lg border ${cat.accent}`}>
                   {cat.icon}
                 </div>
-                <h3 className="text-sm font-semibold tracking-wide text-[#f4f4f6]">
+                <h3 className="font-serif text-lg font-medium text-[#242424]">
                   {cat.title}
                 </h3>
               </div>
@@ -83,7 +104,7 @@ export default function Skills() {
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#14171f] text-[#d4d4d8] border border-white/[0.06] hover:border-white/[0.18] hover:text-white transition-colors"
+                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#F2EFE8] text-[#242424] border border-[#E8E4DC] hover:bg-[#FFFFFF] hover:border-[#D3CEC4] transition-colors"
                   >
                     {skill}
                   </span>
@@ -91,11 +112,11 @@ export default function Skills() {
               </div>
             </div>
 
-            <div className="mt-6 pt-3 border-t border-white/[0.03] flex items-center justify-between text-[11px] font-mono text-[#555865]">
+            <div className="mt-6 pt-3 border-t border-[#E8E4DC]/60 flex items-center justify-between text-[11px] font-mono text-[#77736C]">
               <span>{cat.skills.length} competencies</span>
-              <span>Production Tested</span>
+              <span>Hands-on Proficient</span>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

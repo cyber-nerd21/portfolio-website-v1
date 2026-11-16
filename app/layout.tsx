@@ -2,30 +2,32 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "#090a0c",
+  themeColor: "#FAF9F6",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "Amogh Deodhar — Engineering Student | AI & Full Stack Developer",
+  title: "Amogh Deodhar — GenAI Backend Engineer · Information Technology",
   description:
-    "Engineering student passionate about software engineering, artificial intelligence and automation. Building practical solutions through technology.",
+    "Curious mind building intelligent things. Amogh Deodhar is an Information Technology engineering student at Bharati Vidyapeeth College of Engineering specializing in GenAI, RAG pipelines, LLM agents, and automation.",
   keywords: [
     "Amogh Deodhar",
     "GenAI Backend Engineer",
     "RAG",
+    "LLM Agents",
     "FastAPI",
     "LangChain",
-    "Full Stack Developer",
-    "AI Agents",
+    "Information Technology",
+    "Bharati Vidyapeeth College of Engineering",
+    "Amogh Deodhar Portfolio",
   ],
-  authors: [{ name: "Amogh Deodhar", url: "https://github.com/Gigacorebess" }],
+  authors: [{ name: "Amogh Deodhar", url: "https://github.com/cyber-nerd21" }],
   openGraph: {
-    title: "Amogh Deodhar — Engineering Student | AI & Full Stack Developer",
+    title: "Amogh Deodhar — GenAI Backend Engineer",
     description:
-      "Building things. Exploring ideas. Making them useful. Personal portfolio of Amogh Deodhar.",
+      "Curious mind. Building intelligent things. Information Technology engineering student and developer passionate about AI, backend engineering and automation.",
     url: "https://amoghdeodhar.dev",
     siteName: "Amogh Deodhar Portfolio",
     locale: "en_US",
@@ -39,19 +41,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen bg-[#090a0c] text-[#f4f4f6] antialiased selection:bg-white/20 selection:text-white">
-        <div className="relative min-h-screen flex flex-col justify-between">
-          {/* Subtle ambient lighting inspired by Linear/Raycast */}
-          <div className="fixed inset-0 pointer-events-none z-0">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-gradient-to-b from-white/[0.035] via-white/[0.01] to-transparent blur-3xl opacity-70" />
-            <div className="absolute inset-0 bg-grid-subtle opacity-40 radial-mask" />
-          </div>
-
-          <div className="relative z-10 flex-1 flex flex-col">
-            {children}
-          </div>
-        </div>
+    <html lang="en" className="scroll-smooth">
+      <body className="min-h-screen bg-[#FAF9F6] text-[#242424] font-sans antialiased selection:bg-[#E8E2D5] selection:text-[#242424]">
+        {children}
       </body>
     </html>
   );
