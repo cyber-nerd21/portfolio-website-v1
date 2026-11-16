@@ -42,7 +42,7 @@ export default function Navbar() {
             Amogh Deodhar
           </span>
           <span className="text-[11px] font-mono uppercase tracking-widest text-[#77736C] hidden sm:inline">
-            · Portfolio
+            · Portfolio Website
           </span>
         </a>
 
