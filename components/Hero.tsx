@@ -55,7 +55,7 @@ export default function Hero() {
         className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
       >
         {/* Left Column: Text & Editorial Narrative */}
-        <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+        <div className="lg:col-span-7 flex flex-col justify-center order-1">
           {/* Eyebrow & Status Row */}
           <motion.div
             variants={itemVariants}
@@ -147,7 +147,7 @@ export default function Hero() {
         {/* Right Column: Portrait Frame */}
         <motion.div
           variants={imageVariants}
-          className="lg:col-span-5 flex justify-center order-1 lg:order-2"
+          className="lg:col-span-5 flex justify-center order-2"
         >
           <div className="relative group max-w-[260px] sm:max-w-[320px] md:max-w-[360px] w-full mx-auto">
             {/* Background mat / paper shadow */}
