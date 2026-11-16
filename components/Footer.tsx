@@ -9,11 +9,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[#E8E4DC] bg-[#FAF9F6] py-8 px-6 sm:px-8">
+    <footer className="border-t border-[#E8E4DC] bg-[#FAF9F6] py-6 sm:py-8 px-4 sm:px-6 md:px-8">
       <div className="max-w-6xl mx-auto flex items-center justify-end">
         <button
           onClick={scrollToTop}
-          className="group flex items-center gap-1.5 text-xs font-mono text-[#242424] hover:text-[#77736C] transition-colors"
+          className="group flex items-center gap-1.5 text-xs font-mono text-[#242424] hover:text-[#77736C] transition-colors p-2"
           aria-label="Back to top"
         >
           <span>Back to Top</span>

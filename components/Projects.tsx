@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Github, ArrowUpRight, Play, Image as ImageIcon, AlertCircle, Layers } from "lucide-react";
+import { Github, ArrowUpRight, Play, Image as ImageIcon, AlertCircle } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
 export default function Projects() {
@@ -10,16 +10,16 @@ export default function Projects() {
   const [activeMedia, setActiveMedia] = useState<"video" | "landing" | "chat" | "summary">("video");
 
   return (
-    <section id="projects" className="py-20 md:py-28 px-6 sm:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
+    <section id="projects" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
       {/* Section Header */}
-      <div className="mb-12">
+      <div className="mb-10 sm:mb-12">
         <span className="text-xs font-mono text-[#77736C] uppercase tracking-wider block mb-2">
           03 / Selected Projects
         </span>
-        <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[#242424] mb-3">
+        <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#242424] mb-3">
           Featured &amp; Ongoing Work
         </h2>
-        <p className="text-base text-[#77736C] max-w-xl">
+        <p className="text-sm sm:text-base text-[#77736C] max-w-xl">
           Document intelligence with real demonstration media, alongside active concepts in development.
         </p>
       </div>
@@ -30,20 +30,20 @@ export default function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-6 sm:p-8 shadow-card hover:border-[#D3CEC4] transition-all duration-300 mb-8"
+        className="rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-5 sm:p-7 md:p-8 shadow-card hover:border-[#D3CEC4] transition-all duration-300 mb-6 sm:mb-8"
       >
         {/* Top Meta Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[#E8E4DC] mb-6">
-          <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[#E8E4DC] mb-5 sm:mb-6">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="font-mono text-xs font-semibold tracking-widest text-[#77736C]">
               PROJECT 01
             </span>
             <span className="text-[#D3CEC4]">·</span>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-[#EBF2EC] text-[#4A5D4E] border border-[#D1E0D3] font-medium">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#EBF2EC] text-[#4A5D4E] border border-[#D1E0D3] font-medium">
               Featured Project
             </span>
             <span className="text-[#D3CEC4]">·</span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-[#FFF8EB] text-[#8C6A43] border border-[#F3E3C7]">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#FFF8EB] text-[#8C6A43] border border-[#F3E3C7]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#8C6A43]" />
               Built — Backend unavailable
             </span>
@@ -53,7 +53,7 @@ export default function Projects() {
             href="https://github.com/cyber-nerd21/Insightbot"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#242424] hover:text-[#FFFFFF] bg-[#FAF9F6] hover:bg-[#242424] border border-[#E8E4DC] hover:border-[#242424] px-3.5 py-1.5 rounded-lg transition-all duration-200 self-start sm:self-auto shadow-editorial"
+            className="inline-flex items-center justify-center gap-1.5 text-xs font-mono font-medium text-[#242424] hover:text-[#FFFFFF] bg-[#FAF9F6] hover:bg-[#242424] border border-[#E8E4DC] hover:border-[#242424] px-4 py-2 sm:py-1.5 rounded-lg transition-all duration-200 w-full sm:w-auto shadow-editorial"
             aria-label="View InsightBot repository on GitHub"
           >
             <Github className="w-3.5 h-3.5" />
@@ -63,22 +63,22 @@ export default function Projects() {
         </div>
 
         {/* Two-Column Grid: Narrative on Left, Actual Media on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           {/* Left Column: Details */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="lg:col-span-5 flex flex-col justify-between order-2 lg:order-1">
             <div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#242424] mb-3">
+              <h3 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#242424] mb-2.5">
                 InsightBot
               </h3>
               <p className="text-sm text-[#77736C] leading-relaxed mb-4">
                 An AI-powered document intelligence application that allows users to upload PDFs, ask natural-language questions, generate summaries and create quizzes using a high-accuracy RAG pipeline.
               </p>
 
-              {/* Truthful Railway status context as requested */}
-              <div className="p-3.5 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC] mb-5 text-xs text-[#77736C] leading-relaxed flex items-start gap-2.5">
+              {/* Truthful Railway status context */}
+              <div className="p-3 sm:p-3.5 rounded-xl bg-[#FAF9F6] border border-[#E8E4DC] mb-5 text-xs text-[#77736C] leading-relaxed flex items-start gap-2.5">
                 <AlertCircle className="w-4 h-4 text-[#8C6A43] shrink-0 mt-0.5" />
                 <span>
-                  The frontend was deployed on Vercel. The backend was previously hosted on Railway, but its free tier has concluded. The full application architecture is demonstrated in the actual recordings below.
+                  The frontend was deployed on Vercel. The backend was previously hosted on Railway, but its free tier has concluded. The full application architecture is demonstrated in the actual recordings.
                 </span>
               </div>
 
@@ -90,49 +90,49 @@ export default function Projects() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 rounded-xl bg-[#F2EFE8] border border-[#E8E4DC]">
                   <button
                     onClick={() => setActiveMedia("video")}
-                    className={`flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                    className={`flex items-center justify-center gap-1.5 px-2 py-2 rounded-lg text-[11px] sm:text-xs font-mono transition-all ${
                       activeMedia === "video"
                         ? "bg-[#FFFFFF] text-[#242424] font-medium shadow-editorial"
                         : "text-[#77736C] hover:text-[#242424]"
                     }`}
                   >
-                    <Play className="w-3 h-3 text-[#4A5D4E]" />
+                    <Play className="w-3 h-3 text-[#4A5D4E] shrink-0" />
                     <span>Demo Video</span>
                   </button>
 
                   <button
                     onClick={() => setActiveMedia("landing")}
-                    className={`flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                    className={`flex items-center justify-center gap-1 px-2 py-2 rounded-lg text-[11px] sm:text-xs font-mono transition-all ${
                       activeMedia === "landing"
                         ? "bg-[#FFFFFF] text-[#242424] font-medium shadow-editorial"
                         : "text-[#77736C] hover:text-[#242424]"
                     }`}
                   >
-                    <ImageIcon className="w-3 h-3 text-[#77736C]" />
+                    <ImageIcon className="w-3 h-3 text-[#77736C] shrink-0" />
                     <span>Landing</span>
                   </button>
 
                   <button
                     onClick={() => setActiveMedia("chat")}
-                    className={`flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                    className={`flex items-center justify-center gap-1 px-2 py-2 rounded-lg text-[11px] sm:text-xs font-mono transition-all ${
                       activeMedia === "chat"
                         ? "bg-[#FFFFFF] text-[#242424] font-medium shadow-editorial"
                         : "text-[#77736C] hover:text-[#242424]"
                     }`}
                   >
-                    <ImageIcon className="w-3 h-3 text-[#77736C]" />
+                    <ImageIcon className="w-3 h-3 text-[#77736C] shrink-0" />
                     <span>Chat Q&amp;A</span>
                   </button>
 
                   <button
                     onClick={() => setActiveMedia("summary")}
-                    className={`flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                    className={`flex items-center justify-center gap-1 px-2 py-2 rounded-lg text-[11px] sm:text-xs font-mono transition-all ${
                       activeMedia === "summary"
                         ? "bg-[#FFFFFF] text-[#242424] font-medium shadow-editorial"
                         : "text-[#77736C] hover:text-[#242424]"
                     }`}
                   >
-                    <ImageIcon className="w-3 h-3 text-[#77736C]" />
+                    <ImageIcon className="w-3 h-3 text-[#77736C] shrink-0" />
                     <span>Summary</span>
                   </button>
                 </div>
@@ -153,7 +153,7 @@ export default function Projects() {
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
+                    className="text-[10px] sm:text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
                   >
                     {tag}
                   </span>
@@ -163,7 +163,7 @@ export default function Projects() {
           </div>
 
           {/* Right Column: Actual Real Media Viewer */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 order-1 lg:order-2">
             <div className="relative rounded-xl overflow-hidden border border-[#E8E4DC] bg-[#1a1b1e] shadow-editorial aspect-[16/10] w-full flex items-center justify-center">
               {activeMedia === "video" ? (
                 <video
@@ -196,17 +196,17 @@ export default function Projects() {
             </div>
 
             {/* Subtle caption */}
-            <div className="mt-2.5 px-1 flex items-center justify-between text-[11px] font-mono text-[#77736C]">
+            <div className="mt-2.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] font-mono text-[#77736C]">
               <span>
                 {activeMedia === "video"
                   ? "Real application screen recording"
                   : activeMedia === "landing"
                   ? "Production landing page (insightbot-ai.vercel.app)"
                   : activeMedia === "chat"
-                  ? "Working Q&A chat interface with retrieved vector chunks"
-                  : "Working multi-style summary generation interface"}
+                  ? "Working Q&A chat with retrieved vector chunks"
+                  : "Working multi-style summary generation"}
               </span>
-              <span>100% Unaltered Capture</span>
+              <span className="text-[#4A5D4E]">100% Unaltered Capture</span>
             </div>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
           whileHover={shouldReduceMotion ? {} : { y: -3 }}
-          className="rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-6 hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
+          className="rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-5 sm:p-6 hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
         >
           <div>
             {/* Header */}
@@ -229,14 +229,14 @@ export default function Projects() {
               <span className="font-mono text-xs font-semibold tracking-widest text-[#77736C]">
                 PROJECT 02
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#77736C]" />
                 In Development
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="font-serif text-2xl font-medium tracking-tight text-[#242424] mb-2.5">
+            <h3 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-[#242424] mb-2.5">
               DataSense
             </h3>
 
@@ -252,7 +252,7 @@ export default function Projects() {
               {["Next.js", "React", "Tailwind CSS", "FastAPI", "Supabase"].map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
+                  className="text-[10px] sm:text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
                 >
                   {tech}
                 </span>
@@ -264,7 +264,7 @@ export default function Projects() {
               href="https://github.com/cyber-nerd21/DataSense"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#242424] hover:text-[#FFFFFF] bg-[#FAF9F6] hover:bg-[#242424] border border-[#E8E4DC] hover:border-[#242424] px-3.5 py-1.5 rounded-lg transition-all duration-200 shadow-editorial"
+              className="inline-flex items-center justify-center gap-1.5 text-xs font-mono font-medium text-[#242424] hover:text-[#FFFFFF] bg-[#FAF9F6] hover:bg-[#242424] border border-[#E8E4DC] hover:border-[#242424] px-4 py-2 sm:py-1.5 rounded-lg transition-all duration-200 w-full sm:w-auto shadow-editorial"
               aria-label="View DataSense repository on GitHub"
             >
               <Github className="w-3.5 h-3.5" />
@@ -281,7 +281,7 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : 0.08 }}
           whileHover={shouldReduceMotion ? {} : { y: -3 }}
-          className="rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-6 hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
+          className="rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] p-5 sm:p-6 hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between"
         >
           <div>
             {/* Header */}
@@ -289,14 +289,14 @@ export default function Projects() {
               <span className="font-mono text-xs font-semibold tracking-widest text-[#77736C]">
                 PROJECT 03
               </span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#77736C]" />
                 In Development
               </span>
             </div>
 
             {/* Title */}
-            <h3 className="font-serif text-2xl font-medium tracking-tight text-[#242424] mb-2.5">
+            <h3 className="font-serif text-xl sm:text-2xl font-medium tracking-tight text-[#242424] mb-2.5">
               Ameya Dresswell &amp; Boutique
             </h3>
 
@@ -312,14 +312,14 @@ export default function Projects() {
               {["Next.js", "React", "Tailwind CSS", "Supabase", "PostgreSQL"].map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
+                  className="text-[10px] sm:text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#F2EFE8] text-[#77736C] border border-[#E8E4DC]"
                 >
                   {tech}
                 </span>
               ))}
             </div>
 
-            {/* IMPORTANT: No GitHub button, no demo button for Ameya Dresswell */}
+            {/* Zero external buttons as requested */}
             <div className="text-[11px] font-mono text-[#77736C] pt-2">
               Private Client Prototype · In Active Development
             </div>

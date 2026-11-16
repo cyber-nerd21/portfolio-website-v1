@@ -63,22 +63,22 @@ export default function Skills() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="skills" className="py-20 md:py-28 px-6 sm:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
+    <section id="skills" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
       {/* Section Header */}
-      <div className="mb-14">
+      <div className="mb-10 sm:mb-14">
         <span className="text-xs font-mono text-[#77736C] uppercase tracking-wider block mb-2">
           04 / Skills &amp; Stack
         </span>
-        <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[#242424] mb-3">
+        <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#242424] mb-3">
           Technical Capabilities
         </h2>
-        <p className="text-base text-[#77736C] max-w-xl">
+        <p className="text-sm sm:text-base text-[#77736C] max-w-xl">
           Core engineering stack, libraries, and infrastructure tools applied in building production systems.
         </p>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {SKILL_CATEGORIES.map((cat, idx) => (
           <motion.div
             key={cat.title}
@@ -86,25 +86,25 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : idx * 0.06 }}
-            className={`p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between ${
+            className={`p-5 sm:p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:shadow-card transition-all duration-300 flex flex-col justify-between ${
               idx === 0 ? "md:col-span-2 lg:col-span-2" : ""
             }`}
           >
             <div>
-              <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-[#E8E4DC]">
+              <div className="flex items-center gap-2.5 mb-4 sm:mb-5 pb-3 border-b border-[#E8E4DC]">
                 <div className={`p-1.5 rounded-lg border ${cat.accent}`}>
                   {cat.icon}
                 </div>
-                <h3 className="font-serif text-lg font-medium text-[#242424]">
+                <h3 className="font-serif text-base sm:text-lg font-medium text-[#242424]">
                   {cat.title}
                 </h3>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {cat.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#F2EFE8] text-[#242424] border border-[#E8E4DC] hover:bg-[#FFFFFF] hover:border-[#D3CEC4] transition-colors"
+                    className="inline-flex items-center px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-mono font-medium bg-[#F2EFE8] text-[#242424] border border-[#E8E4DC] hover:bg-[#FFFFFF] hover:border-[#D3CEC4] transition-colors"
                   >
                     {skill}
                   </span>
@@ -112,7 +112,7 @@ export default function Skills() {
               </div>
             </div>
 
-            <div className="mt-6 pt-3 border-t border-[#E8E4DC]/60 flex items-center justify-between text-[11px] font-mono text-[#77736C]">
+            <div className="mt-5 sm:mt-6 pt-3 border-t border-[#E8E4DC]/60 flex items-center justify-between text-[11px] font-mono text-[#77736C]">
               <span>{cat.skills.length} competencies</span>
               <span>Hands-on Proficient</span>
             </div>

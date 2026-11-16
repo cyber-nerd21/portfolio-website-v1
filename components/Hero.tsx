@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { ArrowDown, FileDown, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowDown, FileDown, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion, Variants } from "framer-motion";
 
 export default function Hero() {
@@ -46,25 +46,25 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6 sm:px-8 max-w-6xl mx-auto"
+      className="relative pt-24 pb-14 sm:pt-36 sm:pb-20 md:pt-40 md:pb-28 px-4 sm:px-6 md:px-8 max-w-6xl mx-auto"
     >
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
       >
         {/* Left Column: Text & Editorial Narrative */}
-        <div className="lg:col-span-7 flex flex-col justify-center">
+        <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
           {/* Eyebrow & Status Row */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-3 mb-6"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-6"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F2EFE8] border border-[#E8E4DC]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#77736C]" />
-              <span className="text-[11px] font-mono font-medium tracking-widest text-[#77736C] uppercase">
-                GENAI BACKEND ENGINEER · INFORMATION TECHNOLOGY
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-[#F2EFE8] border border-[#E8E4DC] max-w-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#77736C] shrink-0" />
+              <span className="text-[10px] sm:text-[11px] font-mono font-medium tracking-wider text-[#77736C] uppercase truncate">
+                GENAI BACKEND ENGINEER · IT
               </span>
             </div>
 
@@ -73,8 +73,8 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4A5D4E] opacity-60" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4A5D4E]" />
               </span>
-              <span className="text-[11px] font-mono font-medium text-[#4A5D4E]">
-                Open to Internship Opportunities
+              <span className="text-[10px] sm:text-[11px] font-mono font-medium text-[#4A5D4E]">
+                Open to Internships
               </span>
             </div>
           </motion.div>
@@ -82,7 +82,7 @@ export default function Hero() {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[#242424] leading-[1.08] mb-6"
+            className="font-serif text-3xl sm:text-5xl lg:text-7xl font-normal tracking-tight text-[#242424] leading-[1.12] mb-5 sm:mb-6"
           >
             Curious mind.
             <br />
@@ -95,21 +95,21 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg text-[#77736C] max-w-xl font-normal leading-relaxed mb-9"
+            className="text-sm sm:text-base md:text-lg text-[#77736C] max-w-xl font-normal leading-relaxed mb-8"
           >
             I&apos;m Amogh, an engineering student and developer interested in AI,
             backend engineering and automation. I enjoy turning complex problems
             into useful software.
           </motion.p>
 
-          {/* Action Buttons */}
+          {/* Action Buttons: Full width on mobile, inline on sm+ */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-4 mb-10"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto"
           >
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#242424] text-[#FAF9F6] font-medium text-sm hover:bg-[#383632] transition-all duration-200 shadow-editorial active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#242424] text-[#FAF9F6] font-medium text-sm hover:bg-[#383632] transition-all duration-200 shadow-editorial active:scale-[0.98]"
             >
               <span>Explore Projects</span>
               <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5 text-[#FAF9F6]" />
@@ -120,7 +120,7 @@ export default function Hero() {
               download="Amogh-Deodhar-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-[#FFFFFF] text-[#242424] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:bg-[#F2EFE8] transition-all duration-200 text-sm font-medium shadow-editorial active:scale-[0.98]"
+              className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FFFFFF] text-[#242424] border border-[#E8E4DC] hover:border-[#D3CEC4] hover:bg-[#F2EFE8] transition-all duration-200 text-sm font-medium shadow-editorial active:scale-[0.98]"
             >
               <FileDown className="w-4 h-4 text-[#77736C] group-hover:text-[#242424] transition-colors" />
               <span>Download Resume</span>
@@ -131,43 +131,43 @@ export default function Hero() {
           {/* Minimalist Micro Details */}
           <motion.div
             variants={itemVariants}
-            className="pt-6 border-t border-[#E8E4DC] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#77736C]"
+            className="pt-5 border-t border-[#E8E4DC] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs font-mono text-[#77736C]"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
               <span>Bharati Vidyapeeth &apos;28</span>
               <span className="text-[#D3CEC4]">/</span>
               <span>FastAPI &amp; LangChain</span>
               <span className="text-[#D3CEC4]">/</span>
-              <span>RAG Pipelines</span>
+              <span>RAG</span>
             </div>
-            <span>Mumbai, India</span>
+            <span>Mumbai, India · Remote Ready</span>
           </motion.div>
         </div>
 
-        {/* Right Column: Beautiful Editorial Portrait Frame */}
+        {/* Right Column: Portrait Frame */}
         <motion.div
           variants={imageVariants}
-          className="lg:col-span-5 flex justify-center lg:justify-end"
+          className="lg:col-span-5 flex justify-center order-1 lg:order-2"
         >
-          <div className="relative group max-w-[340px] sm:max-w-[380px] w-full">
+          <div className="relative group max-w-[260px] sm:max-w-[320px] md:max-w-[360px] w-full mx-auto">
             {/* Background mat / paper shadow */}
-            <div className="absolute inset-0 rounded-[28px] bg-[#F2EFE8] transform rotate-1 transition-transform group-hover:rotate-2 duration-300 border border-[#E8E4DC]" />
+            <div className="absolute inset-0 rounded-[24px] sm:rounded-[28px] bg-[#F2EFE8] transform rotate-1 transition-transform group-hover:rotate-2 duration-300 border border-[#E8E4DC]" />
 
             {/* Main Portrait Card */}
-            <div className="relative rounded-[26px] bg-[#FFFFFF] p-3 sm:p-4 border border-[#E8E4DC] shadow-card transition-all duration-300 group-hover:shadow-card-hover">
-              <div className="relative aspect-[4/4.6] w-full overflow-hidden rounded-[20px] bg-[#F2EFE8]">
+            <div className="relative rounded-[22px] sm:rounded-[26px] bg-[#FFFFFF] p-3 sm:p-4 border border-[#E8E4DC] shadow-card transition-all duration-300 group-hover:shadow-card-hover">
+              <div className="relative aspect-[4/4.6] w-full overflow-hidden rounded-[18px] sm:rounded-[20px] bg-[#F2EFE8]">
                 <Image
                   src="/images/amogh.jpg"
                   alt="Amogh Deodhar"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 380px"
+                  sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 360px"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
 
               {/* Editorial Caption Under Portrait */}
-              <div className="mt-3.5 px-2 flex items-baseline justify-between text-xs">
+              <div className="mt-3 px-1 sm:px-2 flex items-baseline justify-between text-xs">
                 <div>
                   <p className="font-serif font-medium text-[#242424] text-sm">
                     Amogh Deodhar

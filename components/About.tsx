@@ -41,21 +41,21 @@ export default function About() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="about" className="py-20 md:py-28 px-6 sm:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
+    <section id="about" className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-8 max-w-6xl mx-auto border-t border-[#E8E4DC]">
       {/* Section Header */}
-      <div className="mb-14">
+      <div className="mb-10 sm:mb-14">
         <span className="text-xs font-mono text-[#77736C] uppercase tracking-wider block mb-2">
           01 / About
         </span>
-        <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[#242424]">
+        <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#242424]">
           A little about me.
         </h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         {/* Left Column: Narrative */}
-        <div className="lg:col-span-7 space-y-6 text-[#77736C] text-base sm:text-lg leading-relaxed font-normal">
-          <p className="font-serif text-xl sm:text-2xl text-[#242424] leading-snug font-normal">
+        <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-[#77736C] text-sm sm:text-base md:text-lg leading-relaxed font-normal">
+          <p className="font-serif text-lg sm:text-xl md:text-2xl text-[#242424] leading-snug font-normal">
             I&apos;m an Information Technology engineering student with practical experience in GenAI development, data visualization, and full-stack engineering.
           </p>
 
@@ -68,7 +68,7 @@ export default function About() {
           </p>
 
           {/* Education Snapshot Card */}
-          <div className="mt-8 p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] shadow-card">
+          <div className="mt-6 sm:mt-8 p-5 sm:p-6 rounded-2xl bg-[#FFFFFF] border border-[#E8E4DC] shadow-card">
             <div className="flex items-center gap-2 text-xs font-mono text-[#77736C] mb-4">
               <GraduationCap className="w-4 h-4 text-[#242424]" />
               <span>ACADEMIC FOUNDATION</span>
@@ -76,27 +76,27 @@ export default function About() {
 
             <div className="space-y-4">
               <div>
-                <div className="flex items-baseline justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                   <h4 className="font-serif text-base sm:text-lg font-medium text-[#242424]">
                     Bharati Vidyapeeth College of Engineering
                   </h4>
                   <span className="text-xs font-mono text-[#77736C]">Expected May 2028</span>
                 </div>
-                <p className="text-sm text-[#77736C] mt-0.5">
+                <p className="text-xs sm:text-sm text-[#77736C] mt-0.5">
                   Bachelor of Engineering · Information Technology · Navi Mumbai
                 </p>
               </div>
 
               <div className="pt-3 border-t border-[#E8E4DC]">
-                <div className="flex items-baseline justify-between">
+                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                   <h4 className="font-serif text-base sm:text-lg font-medium text-[#242424]">
                     Daksh Gurukul, IIT Guwahati
                   </h4>
-                  <span className="text-xs font-mono text-[#4A5D4E] bg-[#EBF2EC] px-2 py-0.5 rounded">
+                  <span className="text-xs font-mono text-[#4A5D4E] bg-[#EBF2EC] px-2 py-0.5 rounded self-start sm:self-auto">
                     Completed
                   </span>
                 </div>
-                <p className="text-sm text-[#77736C] mt-0.5">
+                <p className="text-xs sm:text-sm text-[#77736C] mt-0.5">
                   Data Science and Machine Learning · Capstone Projects in ML, Deep Learning &amp; Analytics
                 </p>
               </div>
